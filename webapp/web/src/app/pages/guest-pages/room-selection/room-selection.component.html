@@ -1,0 +1,8 @@
+<app-avaliable-search (roomsAvailable)="roomsAvailable($event)"></app-avaliable-search>
+<table>
+  <tr *ngFor="let roomType of availableRooms">
+    <td><app-rate [roomType]="roomType" [from]="from" [to]="to"></app-rate></td>
+    <td><app-description [roomType]="roomType"></app-description></td>
+    <td><app-reserve [roomType]="roomType" [from]="from" [to]="to" (reservationCreated)="reservationCreated($event)"></app-reserve></td>
+  </tr>
+</table>

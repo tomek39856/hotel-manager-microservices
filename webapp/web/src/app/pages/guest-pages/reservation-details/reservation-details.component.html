@@ -1,0 +1,4 @@
+<app-guest-details [submitEvents]="submitEventsSubject" [reservationId]="reservationId"(createSuccess)="guestCreated()"></app-guest-details>
+<app-payment-data [submitEvent]="submitEventsSubject" [reservationId]="reservationId"
+                  (paymentDataSaveSuccess)="paymentCreated($event)"></app-payment-data>
+<button (click)="submit()">Submit</button>

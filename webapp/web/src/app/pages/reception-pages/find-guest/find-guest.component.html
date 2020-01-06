@@ -1,0 +1,6 @@
+<app-guest-search (guestsFound)="guestsFound($event)"></app-guest-search>
+<div *ngFor="let guest of guests">
+  <app-guest-display [guest]="guest"></app-guest-display>
+  <app-confirm-arrival [reservationId]="guest.reservationId" (arrivalConfirmed)="guestArrivalConfirmed(guest)"></app-confirm-arrival>
+</div>
+

@@ -1,0 +1,3 @@
+<div *ngFor="let room of rooms">
+  <app-room-properties [room]="room" (roomForCheckInSelected)="checkIn($event)" ></app-room-properties>
+</div>

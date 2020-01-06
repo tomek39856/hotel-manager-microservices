@@ -1,0 +1,14 @@
+group 'com.github.tomek39856'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.0.3.RELEASE'
+}

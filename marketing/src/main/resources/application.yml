@@ -1,0 +1,7 @@
+server:
+  port: 1592
+spring:
+  application:
+    name: marketing
+  profiles:
+    active: local

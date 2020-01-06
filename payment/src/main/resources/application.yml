@@ -1,0 +1,5 @@
+server:
+  port: 1490
+spring:
+  application:
+    name: payment

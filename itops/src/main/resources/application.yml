@@ -1,0 +1,5 @@
+server:
+  port: 1491
+spring:
+  application:
+    name: itops

@@ -1,0 +1,7 @@
+server:
+  port: 1488
+spring:
+  application:
+    name: reservation
+  profiles:
+    active: local

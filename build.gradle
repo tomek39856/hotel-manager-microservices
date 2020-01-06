@@ -1,0 +1,25 @@
+plugins {
+    id 'org.springframework.boot' version '2.0.3.RELEASE' apply false
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE' apply false
+}
+
+group 'com.github.tomek39856'
+version '1.0-SNAPSHOT'
+
+allprojects {
+
+
+    repositories {
+        mavenCentral()
+    }
+}
+subprojects {
+    apply plugin: 'java'
+    compileJava {
+        options.compilerArgs.add '-parameters'
+    }
+    compileTestJava {
+        options.compilerArgs.add '-parameters'
+    }
+}
+

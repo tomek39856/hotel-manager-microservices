@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="hotel-manager-microservices_main" target="1.8" />
+      <module name="hotel-manager-microservices_test" target="1.8" />
+      <module name="itops-contract_main" target="1.8" />
+      <module name="itops-contract_test" target="1.8" />
+      <module name="rate-provider_main" target="1.8" />
+      <module name="rate-provider_test" target="1.8" />
+      <module name="reservation-client_main" target="1.8" />
+      <module name="reservation-client_test" target="1.8" />
+      <module name="reservation-provider_main" target="1.8" />
+      <module name="reservation-provider_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

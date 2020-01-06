@@ -1,0 +1,39 @@
+group 'com.github.tomek39856'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.0.3.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.3.RELEASE'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.0.3.RELEASE'
+}
+
+task npmInstall(type: Exec) {
+    workingDir 'web'
+    commandLine 'npm.cmd', 'install'
+}
+
+task npmBuildFrontend(type: Exec) {
+    inputs.dir('web/src')
+    inputs.file('web/package.json')
+    outputs.dir('web/dist')
+
+    workingDir 'web'
+    commandLine 'npm.cmd', 'run', 'build', "--deploy-url='/webapp/'"
+
+    doLast {
+        print("frontend build finished ")
+    }
+}
+
+task copyFrontendToResources(type: Copy) {
+    from 'web/dist/hotel-manager-web'
+    into 'build/resources/main/static'
+}
+
+npmBuildFrontend.dependsOn(npmInstall)
+copyFrontendToResources.dependsOn(npmBuildFrontend)
+processResources.dependsOn(copyFrontendToResources)
+

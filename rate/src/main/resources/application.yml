@@ -1,0 +1,7 @@
+server:
+  port: 1489
+spring:
+  application:
+    name: rate
+  profiles:
+    active: local
