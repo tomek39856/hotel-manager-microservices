@@ -1,7 +1,7 @@
 package com.github.tomek39856.hotel.manager.reservation;
 
-import com.github.tomek39856.hotel.manager.reservation.event.ReservationHoldEstablishedEvent;
-import com.github.tomek39856.hotel.manager.reservation.event.ReservationPaymentFailedEvent;
+import com.github.tomek39856.hotel.manager.reservation.event.in.ReservationHoldEstablishedEvent;
+import com.github.tomek39856.hotel.manager.reservation.event.in.ReservationPaymentFailedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 

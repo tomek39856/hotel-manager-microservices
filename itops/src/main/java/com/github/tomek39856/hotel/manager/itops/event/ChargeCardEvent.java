@@ -1,7 +1,10 @@
 package com.github.tomek39856.hotel.manager.itops.event;
 
-public abstract class ChargeCardEvent { // implements Event {
- /*
+import com.github.tomek39856.hotel.manager.itops.dto.PaymentInformationDto;
+import com.github.tomek39856.hotel.manager.itops.infrastructure.Event;
+
+public abstract class ChargeCardEvent implements Event {
+
   private final PaymentInformationDto payment;
   private final long amountChargePercentage;
 
@@ -17,5 +20,5 @@ public abstract class ChargeCardEvent { // implements Event {
   public long getAmountChargePercentage() {
     return amountChargePercentage;
   }
-  */
+
 }

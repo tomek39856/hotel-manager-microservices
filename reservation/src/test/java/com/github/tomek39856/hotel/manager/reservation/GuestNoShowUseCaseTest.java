@@ -1,6 +1,6 @@
 package com.github.tomek39856.hotel.manager.reservation;
 
-import com.github.tomek39856.hotel.manager.reservation.event.NoShowEvent;
+import com.github.tomek39856.hotel.manager.reservation.event.out.NoShowEvent;
 import com.github.tomek39856.hotel.manager.reservation.infrastructure.Event;
 import com.github.tomek39856.hotel.manager.reservation.infrastructure.EventPublisher;
 import com.github.tomek39856.hotel.manager.reservation.resolver.DateTimeFormatterResolver;

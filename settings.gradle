@@ -11,4 +11,5 @@ include 'rate:rate-provider'
 include 'payment'
 include 'gateway'
 include 'webapp'
+include 'occupancy'
 

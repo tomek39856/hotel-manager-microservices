@@ -1,4 +1,4 @@
-package com.github.tomek39856.hotel.manager.reservation.event;
+package com.github.tomek39856.hotel.manager.reservation.event.in;
 
 
 import com.github.tomek39856.hotel.manager.reservation.infrastructure.Event;

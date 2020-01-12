@@ -1,11 +1,11 @@
-package com.github.tomek39856.hotel.manager.reservation.event;
+package com.github.tomek39856.hotel.manager.reservation.event.in;
 
 import com.github.tomek39856.hotel.manager.reservation.infrastructure.Event;
 
-public class NoShowEvent implements Event {
+public class ReservationPaymentFailedEvent implements Event {
   private final String reservationId;
 
-  public NoShowEvent(String reservationId) {
+  public ReservationPaymentFailedEvent(String reservationId) {
     this.reservationId = reservationId;
   }
 
