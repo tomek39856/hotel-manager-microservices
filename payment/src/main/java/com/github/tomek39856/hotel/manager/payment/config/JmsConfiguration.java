@@ -1,7 +1,7 @@
 package com.github.tomek39856.hotel.manager.payment.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.tomek39856.hotel.manager.payment.event.in.NoShowEvent;
+import com.github.tomek39856.hotel.manager.payment.event.in.*;
 import com.github.tomek39856.hotel.manager.payment.event.out.ReservationHoldEstablishedEvent;
 import com.github.tomek39856.hotel.manager.payment.event.out.ReservationPaymentFailedEvent;
 import com.github.tomek39856.hotel.manager.payment.event.out.itops.ChargeCancellationFeeEvent;
@@ -49,6 +49,11 @@ public class JmsConfiguration {
 
     // in:
     idMapping.put(NoShowEvent.class.getSimpleName(), NoShowEvent.class);
+    idMapping.put(CardChargedEvent.class.getSimpleName(), CardChargedEvent.class);
+    idMapping.put(ChargeCardFailedEvent.class.getSimpleName(), ChargeCardFailedEvent.class);
+    idMapping.put(HoldCreatedEvent.class.getSimpleName(), HoldCreatedEvent.class);
+    idMapping.put(HoldFailedEvent.class.getSimpleName(), HoldFailedEvent.class);
+    idMapping.put(UserCheckedInEvent.class.getSimpleName(), UserCheckedInEvent.class);
 
     // out:
     idMapping.put(ReservationHoldEstablishedEvent.class.getSimpleName(), ReservationHoldEstablishedEvent.class);

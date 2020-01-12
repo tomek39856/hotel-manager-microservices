@@ -2,7 +2,12 @@ package com.github.tomek39856.hotel.manager.itops.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.github.tomek39856.hotel.manager.itops.event.in.ChargeCardEvent;
 import com.github.tomek39856.hotel.manager.itops.event.in.CreateHoldEvent;
+import com.github.tomek39856.hotel.manager.itops.event.out.CardChargedEvent;
+import com.github.tomek39856.hotel.manager.itops.event.out.ChargeCardFailedEvent;
+import com.github.tomek39856.hotel.manager.itops.event.out.HoldCreatedEvent;
+import com.github.tomek39856.hotel.manager.itops.event.out.HoldFailedEvent;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,12 +45,14 @@ public class JmsConfiguration {
     HashMap<String, Class<?>> idMapping = new HashMap<>();
 
     // in:
-    idMapping.put(ChargeCancellationFeeEvent.class.getSimpleName(), ChargeCancellationFeeEvent.class);
-    idMapping.put(ChargeCardWithFullPriceEvent.class.getSimpleName(), ChargeCardWithFullPriceEvent.class);
+    idMapping.put(ChargeCardEvent.class.getSimpleName(), ChargeCardEvent.class);
     idMapping.put(CreateHoldEvent.class.getSimpleName(), CreateHoldEvent.class);
 
     // out:
-
+    idMapping.put(CardChargedEvent.class.getSimpleName(), CardChargedEvent.class);
+    idMapping.put(ChargeCardFailedEvent.class.getSimpleName(), ChargeCardFailedEvent.class);
+    idMapping.put(HoldCreatedEvent.class.getSimpleName(), HoldCreatedEvent.class);
+    idMapping.put(HoldFailedEvent.class.getSimpleName(), HoldFailedEvent.class);
 
     messageConverter.setTypeIdMappings(idMapping);
     return messageConverter;

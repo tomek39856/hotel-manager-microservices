@@ -2,6 +2,7 @@ package com.github.tomek39856.hotel.manager.itops;
 
 import com.github.tomek39856.hotel.manager.itops.event.in.CreateHoldEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

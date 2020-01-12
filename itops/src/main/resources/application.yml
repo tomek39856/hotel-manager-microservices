@@ -3,3 +3,9 @@ server:
 spring:
   application:
     name: itops
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  jms:
+    pub-sub-domain: true
