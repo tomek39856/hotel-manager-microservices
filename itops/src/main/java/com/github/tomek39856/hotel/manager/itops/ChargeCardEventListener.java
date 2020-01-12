@@ -1,6 +1,8 @@
 package com.github.tomek39856.hotel.manager.itops;
 
+import com.github.tomek39856.hotel.manager.itops.event.in.ChargeCardEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +14,10 @@ class ChargeCardEventListener {
     this.chargeCardUseCase = chargeCardUseCase;
   }
 
-  /*
-  @Async
-  @EventListener
+
+  @JmsListener(destination = "payment.card.charge")
   void handle(ChargeCardEvent chargeCardEvent) {
     chargeCardUseCase.charge(chargeCardEvent.getPayment(), chargeCardEvent.getAmountChargePercentage());
   }
-  */
+
 }

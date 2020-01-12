@@ -1,9 +1,9 @@
-package com.github.tomek39856.hotel.manager.itops.event;
+package com.github.tomek39856.hotel.manager.itops.event.in;
 
 import com.github.tomek39856.hotel.manager.itops.dto.PaymentInformationDto;
 import com.github.tomek39856.hotel.manager.itops.infrastructure.Event;
 
-public abstract class ChargeCardEvent implements Event {
+public class ChargeCardEvent implements Event {
 
   private final PaymentInformationDto payment;
   private final long amountChargePercentage;

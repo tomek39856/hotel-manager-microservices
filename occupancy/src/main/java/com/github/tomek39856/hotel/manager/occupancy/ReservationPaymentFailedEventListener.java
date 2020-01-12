@@ -2,6 +2,7 @@ package com.github.tomek39856.hotel.manager.occupancy;
 
 import com.github.tomek39856.hotel.manager.occupancy.event.in.ReservationPaymentFailedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,7 +13,7 @@ class ReservationPaymentFailedEventListener {
     this.cancelCheckInUseCase = cancelCheckInUseCase;
   }
 
-  @EventListener
+  @JmsListener(destination = "payment.status", selector = "type = 'ReservationPaymentFailedEvent'")
   void handle(ReservationPaymentFailedEvent event) {
     cancelCheckInUseCase.execute(event.getReservationId());
   }

@@ -2,9 +2,7 @@ package com.github.tomek39856.hotel.manager.itops.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.github.tomek39856.hotel.manager.itops.event.ChargeCancellationFeeEvent;
-import com.github.tomek39856.hotel.manager.itops.event.ChargeCardWithFullPriceEvent;
-import com.github.tomek39856.hotel.manager.itops.event.CreateHoldEvent;
+import com.github.tomek39856.hotel.manager.itops.event.in.CreateHoldEvent;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

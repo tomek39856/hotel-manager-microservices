@@ -1,8 +1,8 @@
 package com.github.tomek39856.hotel.manager.itops;
 
 import com.github.tomek39856.hotel.manager.itops.dto.PaymentInformationDto;
-import com.github.tomek39856.hotel.manager.itops.event.HoldCreatedEvent;
-import com.github.tomek39856.hotel.manager.itops.event.HoldFailedEvent;
+import com.github.tomek39856.hotel.manager.itops.event.out.HoldCreatedEvent;
+import com.github.tomek39856.hotel.manager.itops.event.out.HoldFailedEvent;
 import com.github.tomek39856.hotel.manager.itops.infrastructure.EventPublisher;
 import com.github.tomek39856.hotel.manager.rate.provider.RateProvider;
 import com.github.tomek39856.hotel.manager.rate.provider.dto.RoomRateDto;
