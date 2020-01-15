@@ -10,16 +10,14 @@ public class RoomReservationDto {
   private final LocalDate start;
   private final LocalDate end;
   private final Instant reservedAt;
-  private final ReservationStatus status;
   private final String roomType;
 
   @JsonCreator
-  public RoomReservationDto(String id, LocalDate start, LocalDate end, Instant reservedAt, ReservationStatus status, String roomType) {
+  public RoomReservationDto(String id, LocalDate start, LocalDate end, Instant reservedAt, String roomType) {
     this.id = id;
     this.start = start;
     this.end = end;
     this.reservedAt = reservedAt;
-    this.status = status;
     this.roomType = roomType;
   }
 

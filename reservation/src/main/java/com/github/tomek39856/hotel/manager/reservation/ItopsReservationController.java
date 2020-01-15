@@ -17,7 +17,13 @@ public class ItopsReservationController implements ReservationProvider {
 
   @GetMapping("/itops/reservation/{id}")
   public RoomReservationDto provide(@PathVariable("id") String id) {
-    //return findReservationUseCase.execute(id);
-    return null;
+    com.github.tomek39856.hotel.manager.reservation.dto.RoomReservationDto roomReservationDto = findReservationUseCase.execute(id);
+    return new RoomReservationDto(
+        roomReservationDto.getId(),
+        roomReservationDto.getStart(),
+        roomReservationDto.getEnd(),
+        roomReservationDto.getReservedAt(),
+        roomReservationDto.getRoomType().name()
+    );
   }
 }
