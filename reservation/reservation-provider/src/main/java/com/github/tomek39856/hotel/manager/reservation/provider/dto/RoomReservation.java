@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.time.Instant;
 import java.time.LocalDate;
 
-public class RoomReservationDto {
+public class RoomReservation {
   private final String id;
   private final LocalDate start;
   private final LocalDate end;
@@ -13,7 +13,7 @@ public class RoomReservationDto {
   private final String roomType;
 
   @JsonCreator
-  public RoomReservationDto(String id, LocalDate start, LocalDate end, Instant reservedAt, String roomType) {
+  public RoomReservation(String id, LocalDate start, LocalDate end, Instant reservedAt, String roomType) {
     this.id = id;
     this.start = start;
     this.end = end;

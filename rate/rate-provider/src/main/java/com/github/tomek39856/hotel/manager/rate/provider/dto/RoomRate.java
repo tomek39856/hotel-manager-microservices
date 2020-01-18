@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.math.BigDecimal;
 
-public class RoomRateDto {
+public class RoomRate {
   private final BigDecimal sum;
 
   @JsonCreator
-  public RoomRateDto(BigDecimal sum) {
+  public RoomRate(BigDecimal sum) {
     this.sum = sum;
   }
 

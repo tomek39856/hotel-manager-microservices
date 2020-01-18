@@ -5,9 +5,9 @@ import com.github.tomek39856.hotel.manager.itops.event.out.HoldCreatedEvent;
 import com.github.tomek39856.hotel.manager.itops.event.out.HoldFailedEvent;
 import com.github.tomek39856.hotel.manager.itops.infrastructure.EventPublisher;
 import com.github.tomek39856.hotel.manager.rate.provider.RateProvider;
-import com.github.tomek39856.hotel.manager.rate.provider.dto.RoomRateDto;
+import com.github.tomek39856.hotel.manager.rate.provider.dto.RoomRate;
 import com.github.tomek39856.hotel.manager.reservation.provider.ReservationProvider;
-import com.github.tomek39856.hotel.manager.reservation.provider.dto.RoomReservationDto;
+import com.github.tomek39856.hotel.manager.reservation.provider.dto.RoomReservation;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,8 +35,8 @@ import java.util.List;
     } else {
       createdHolds.add(payment.getId());
     }
-    RoomReservationDto reservation = reservationProvider.provide(payment.getReservationId());
-    RoomRateDto rate = rateProvider.findRateAt(reservation.getRoomType(), reservation.getStart(), reservation.getEnd(), reservation.getReservedAt());
+    RoomReservation reservation = reservationProvider.provide(payment.getReservationId());
+    RoomRate rate = rateProvider.findRateAt(reservation.getRoomType(), reservation.getStart(), reservation.getEnd(), reservation.getReservedAt());
     try {
       externalCardService.hold(payment.getCard().getOwner(), payment.getCard().getNumber(), payment.getCard().getValidityDate(), rate.getSum());
       eventPublisher.publishEvent(new HoldCreatedEvent(payment.getId()));

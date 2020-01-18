@@ -36,7 +36,7 @@ class ItopsReservationControllerTest extends ComponentTest {
     reservableRoomRepository.save(reservedRoom);
 
     // when:
-//    RoomReservationDto result = itopsReservationController.provide(reservation.getId());
+//    RoomReservation result = itopsReservationController.provide(reservation.getId());
 
   //  assertEquals(reservation.getId(), result.getId());
  //   assertEquals(RoomType.KING, result.getRoomType());

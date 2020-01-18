@@ -5,10 +5,10 @@ import com.github.tomek39856.hotel.manager.itops.dto.PaymentInformationDto;
 import com.github.tomek39856.hotel.manager.itops.event.out.HoldCreatedEvent;
 import com.github.tomek39856.hotel.manager.itops.event.out.HoldFailedEvent;
 import com.github.tomek39856.hotel.manager.rate.provider.RateProvider;
-import com.github.tomek39856.hotel.manager.rate.provider.dto.RoomRateDto;
+import com.github.tomek39856.hotel.manager.rate.provider.dto.RoomRate;
 import com.github.tomek39856.hotel.manager.reservation.provider.ReservationProvider;
 import com.github.tomek39856.hotel.manager.reservation.provider.dto.ReservationStatus;
-import com.github.tomek39856.hotel.manager.reservation.provider.dto.RoomReservationDto;
+import com.github.tomek39856.hotel.manager.reservation.provider.dto.RoomReservation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -44,7 +44,7 @@ class CreateHoldUseCaseTest extends EventPublishingComponentTest {
     String reservationId = UUID.randomUUID().toString();
     CardDto cardDto = new CardDto("Adam Nowak", "123456", LocalDate.now());
     Instant reservedAt = Instant.now();
-    RoomReservationDto roomReservationDto = new RoomReservationDto(
+    RoomReservation roomReservation = new RoomReservation(
         reservationId,
         startDate,
         endDate,
@@ -52,10 +52,10 @@ class CreateHoldUseCaseTest extends EventPublishingComponentTest {
         ReservationStatus.ACTIVE,
         "STANDARD"
     );
-    RoomRateDto roomRateDto = new RoomRateDto(BigDecimal.valueOf(100));
+    RoomRate roomRate = new RoomRate(BigDecimal.valueOf(100));
     PaymentInformationDto paymentInformationDto = new PaymentInformationDto(UUID.randomUUID().toString(), reservationId, cardDto);
-    Mockito.when(reservationProvider.provide(reservationId)).thenReturn(roomReservationDto);
-    Mockito.when(rateProvider.findRateAt("STANDARD", startDate, endDate, reservedAt)).thenReturn(roomRateDto);
+    Mockito.when(reservationProvider.provide(reservationId)).thenReturn(roomReservation);
+    Mockito.when(rateProvider.findRateAt("STANDARD", startDate, endDate, reservedAt)).thenReturn(roomRate);
 
     // when:
     createHoldUseCase.create(paymentInformationDto);
@@ -75,7 +75,7 @@ class CreateHoldUseCaseTest extends EventPublishingComponentTest {
     String reservationId = UUID.randomUUID().toString();
     CardDto cardDto = new CardDto("Adam Nowak", "123456", LocalDate.now());
     Instant reservedAt = Instant.now();
-    RoomReservationDto roomReservationDto = new RoomReservationDto(
+    RoomReservation roomReservation = new RoomReservation(
         reservationId,
         startDate,
         endDate,
@@ -83,10 +83,10 @@ class CreateHoldUseCaseTest extends EventPublishingComponentTest {
         ReservationStatus.ACTIVE,
         "STANDARD"
     );
-    RoomRateDto roomRateDto = new RoomRateDto(BigDecimal.valueOf(100));
+    RoomRate roomRate = new RoomRate(BigDecimal.valueOf(100));
     PaymentInformationDto paymentInformationDto = new PaymentInformationDto(UUID.randomUUID().toString(), reservationId, cardDto);
-    Mockito.when(reservationProvider.provide(reservationId)).thenReturn(roomReservationDto);
-    Mockito.when(rateProvider.findRateAt("STANDARD", startDate, endDate, reservedAt)).thenReturn(roomRateDto);
+    Mockito.when(reservationProvider.provide(reservationId)).thenReturn(roomReservation);
+    Mockito.when(rateProvider.findRateAt("STANDARD", startDate, endDate, reservedAt)).thenReturn(roomRate);
     Mockito.doThrow(new RuntimeException()).when(externalCardService).hold(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any());
 
     // when:

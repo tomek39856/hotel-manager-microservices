@@ -7,9 +7,9 @@ import com.github.tomek39856.hotel.manager.itops.event.out.ChargeCardFailedEvent
 import com.github.tomek39856.hotel.manager.itops.infrastructure.EventPublisher;
 import com.github.tomek39856.hotel.manager.itops.infrastructure.UseCase;
 import com.github.tomek39856.hotel.manager.rate.provider.RateProvider;
-import com.github.tomek39856.hotel.manager.rate.provider.dto.RoomRateDto;
+import com.github.tomek39856.hotel.manager.rate.provider.dto.RoomRate;
 import com.github.tomek39856.hotel.manager.reservation.provider.ReservationProvider;
-import com.github.tomek39856.hotel.manager.reservation.provider.dto.RoomReservationDto;
+import com.github.tomek39856.hotel.manager.reservation.provider.dto.RoomReservation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -37,8 +37,8 @@ class ChargeCardUseCase {
     } else {
       proceededPayments.add(payment.getId());
     }
-    RoomReservationDto reservation = reservationProvider.provide(payment.getReservationId());
-    RoomRateDto rate = rateProvider.findRateAt(reservation.getRoomType(), reservation.getStart(), reservation.getEnd(), reservation.getReservedAt());
+    RoomReservation reservation = reservationProvider.provide(payment.getReservationId());
+    RoomRate rate = rateProvider.findRateAt(reservation.getRoomType(), reservation.getStart(), reservation.getEnd(), reservation.getReservedAt());
     try {
       CardDto card = payment.getCard();
       externalCardService.charge(card.getOwner(), card.getNumber(), card.getValidityDate(), calculateAmount(amountPartPercentage, rate));
@@ -48,7 +48,7 @@ class ChargeCardUseCase {
     }
   }
 
-  private BigDecimal calculateAmount(long amountPartPercentage, RoomRateDto rate) {
+  private BigDecimal calculateAmount(long amountPartPercentage, RoomRate rate) {
     return rate.getSum().multiply(BigDecimal.valueOf(amountPartPercentage)).divide(BigDecimal.valueOf(100));
   }
 
