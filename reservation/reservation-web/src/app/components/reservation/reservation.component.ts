@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Reservation} from '../reservation';
-import {ReservationService} from '../reservation.service';
 import {share} from 'rxjs/operators';
+import {Reservation} from "../../model/reservation";
+import {ReservationService} from "../../services/reservation.service";
 
 @Component({
   selector: 'app-reservation',

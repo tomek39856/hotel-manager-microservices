@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ReservationService} from '../reservation.service';
+import {ReservationService} from "../../services/reservation.service";
 
 @Component({
   selector: 'app-confirm-arrival',

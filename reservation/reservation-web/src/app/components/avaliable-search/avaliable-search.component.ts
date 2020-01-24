@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {RoomService} from '../room.service';
 import {RoomsAvailableEvent} from './rooms-available-event';
+import {RoomService} from "../../services/room.service";
 
 @Component({
   selector: 'app-avaliable-search',
@@ -9,7 +9,7 @@ import {RoomsAvailableEvent} from './rooms-available-event';
   styleUrls: ['./avaliable-search.component.sass']
 })
 export class AvaliableSearchComponent implements OnInit {
-  @Output()
+  @Output('rooms-available')
   roomsAvailable: EventEmitter<RoomsAvailableEvent> = new EventEmitter<RoomsAvailableEvent>();
   form: FormGroup;
 
@@ -24,10 +24,14 @@ export class AvaliableSearchComponent implements OnInit {
   }
 
   search() {
+    console.log('search started')
     const from = this.form.get('from').value;
     const to = this.form.get('to').value;
     this.roomService.getRooms(from, to).subscribe(
-      value => this.roomsAvailable.emit(new RoomsAvailableEvent(value, from, to))
+      value => {
+        console.log('rooms av')
+        this.roomsAvailable.emit(new RoomsAvailableEvent(value, from, to))
+      }
     )
   }
 

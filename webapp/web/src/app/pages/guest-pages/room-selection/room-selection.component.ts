@@ -17,10 +17,10 @@ export class RoomSelectionComponent implements OnInit {
 
   ngOnInit() {}
 
-  roomsAvailable(event: RoomsAvailableEvent) {
-    this.availableRooms = event.roomTypes;
-    this.from = event.from;
-    this.to = event.to;
+  roomsAvailable(event) {
+    this.availableRooms = event.detail.roomTypes;
+    this.from = event.detail.from;
+    this.to = event.detail.to;
   }
 
   reservationCreated(reservationId: string) {
