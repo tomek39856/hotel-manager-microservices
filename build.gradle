@@ -7,8 +7,6 @@ group 'com.github.tomek39856'
 version '1.0-SNAPSHOT'
 
 allprojects {
-
-
     repositories {
         mavenCentral()
     }

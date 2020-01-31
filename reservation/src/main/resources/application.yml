@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: reservation
+  mvc:
+    static-path-pattern: /resources/**
   profiles:
     active: local
   activemq:

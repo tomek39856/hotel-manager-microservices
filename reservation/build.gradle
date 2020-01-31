@@ -15,3 +15,32 @@ dependencies {
     compile project('reservation-provider')
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.3.RELEASE'
 }
+
+
+task npmInstall(type: Exec) {
+    workingDir 'reservation-web'
+    commandLine 'npm.cmd', 'install'
+}
+
+task npmBuildFrontend(type: Exec) {
+    inputs.dir('reservation-web/src')
+    inputs.file('reservation-web/package.json')
+    outputs.dir('reservation-web/dist')
+
+    workingDir 'reservation-web'
+
+    commandLine "npm.cmd", "build", "--prod", "--output-hashing none", "--single-bundle true"
+
+    doLast {
+        print("frontend build finished")
+    }
+}
+
+task copyFrontendToResources(type: Copy) {
+    from 'reservation-web/dist/reservation-web'
+    into 'build/resources/main/static'
+}
+
+npmBuildFrontend.dependsOn(npmInstall)
+copyFrontendToResources.dependsOn(npmBuildFrontend)
+processResources.dependsOn(copyFrontendToResources)

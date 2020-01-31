@@ -17,3 +17,32 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.3.RELEASE'
 }
+
+
+task npmInstall(type: Exec) {
+    workingDir 'rate-web'
+    commandLine 'npm.cmd', 'install'
+}
+
+task npmBuildFrontend(type: Exec) {
+    inputs.dir('rate-web/src')
+    inputs.file('rate-web/package.json')
+    outputs.dir('rate-web/dist')
+
+    workingDir 'rate-web'
+
+    commandLine "npm.cmd", "build", "--prod", "--output-hashing none", "--single-bundle true"
+
+    doLast {
+        print("frontend build finished")
+    }
+}
+
+task copyFrontendToResources(type: Copy) {
+    from 'rate-web/dist/rate-web'
+    into 'build/resources/main/static'
+}
+
+npmBuildFrontend.dependsOn(npmInstall)
+copyFrontendToResources.dependsOn(npmBuildFrontend)
+processResources.dependsOn(copyFrontendToResources)
