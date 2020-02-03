@@ -1,21 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
 import {RateComponent} from "./components/rate/rate.component";
+import {createCustomElement} from "@angular/elements";
+import {RateService} from "./services/rate.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
-    AppComponent,
     RateComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RateService],
   entryComponents: [
+    RateComponent
+  ],
+  exports: [
     RateComponent
   ],
   bootstrap: []
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor(private injector: Injector) {
+  }
+
+  ngDoBootstrap() {
+    customElements.define('app-rate', createCustomElement(RateComponent, { injector: this.injector }));
+  }
+}
