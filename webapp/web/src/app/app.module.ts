@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RoomSelectionComponent } from './pages/guest-pages/room-selection/room-selection.component';
 import { StayDetailsComponent } from './pages/guest-pages/stay-details/stay-details.component';
-import { RateComponent } from './modules/rate/rate.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { DescriptionComponent } from './modules/marketing/description/description.component';
@@ -32,7 +31,6 @@ import { ChargeStatusComponent } from './modules/payment/charge-status/charge-st
     AppComponent,
     RoomSelectionComponent,
     StayDetailsComponent,
-    RateComponent,
     DescriptionComponent,
     ReservationDetailsComponent,
     GuestProvideComponent,

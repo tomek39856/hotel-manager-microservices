@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {RoomsAvailableEvent} from '../../../modules/reservation/avaliable-search/rooms-available-event';
 import {Router} from '@angular/router';
 
 @Component({
@@ -18,9 +17,10 @@ export class RoomSelectionComponent implements OnInit {
   ngOnInit() {}
 
   roomsAvailable(event) {
-    this.availableRooms = event.detail.roomTypes;
+
     this.from = event.detail.from;
     this.to = event.detail.to;
+    this.availableRooms = event.detail.roomTypes;
   }
 
   reservationCreated(reservationId: string) {

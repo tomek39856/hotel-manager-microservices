@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {Reservation} from '../../../modules/reservation/reservation';
 import {ActivatedRoute} from '@angular/router';
 import {Room} from '../../../modules/occupancy/room';
+import {Reservation} from "../../../model/reservation";
 
 @Component({
   selector: 'app-check-in',

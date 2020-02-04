@@ -31,7 +31,7 @@ task npmBuildFrontend(type: Exec) {
 
     workingDir 'rate-web'
 
-    commandLine "npm.cmd", "build", "--prod", "--output-hashing none", "--single-bundle true"
+    commandLine "npm.cmd", "run", "build"
 
     doLast {
         print("frontend build finished")

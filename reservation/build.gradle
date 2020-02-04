@@ -29,7 +29,7 @@ task npmBuildFrontend(type: Exec) {
 
     workingDir 'reservation-web'
 
-    commandLine "npm.cmd", "build", "--prod", "--output-hashing none", "--single-bundle true"
+    commandLine "npm.cmd", "run", "build"
 
     doLast {
         print("frontend build finished")

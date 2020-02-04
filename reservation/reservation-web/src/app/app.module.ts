@@ -33,9 +33,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReservationComponent,
     ReserveComponent
   ],
-  exports: [
-    AvaliableSearchComponent
-  ],
+
   bootstrap: []
 })
 export class AppModule {
@@ -45,8 +43,11 @@ export class AppModule {
 
   ngDoBootstrap() {
     customElements.define('app-avaliable-search', createCustomElement(AvaliableSearchComponent, { injector: this.injector }));
+   /*
     customElements.define('app-reserve', createCustomElement(ReserveComponent, { injector: this.injector }));
     customElements.define('app-reservation', createCustomElement(ReservationComponent, { injector: this.injector }));
     customElements.define('app-confirm-arrival', createCustomElement(ConfirmArrivalComponent, { injector: this.injector }));
+
+    */
   }
 }

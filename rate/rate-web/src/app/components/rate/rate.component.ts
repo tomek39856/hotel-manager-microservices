@@ -1,14 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges
-} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {RateService} from "../../services/rate.service";
-import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-rate',
@@ -23,22 +14,15 @@ export class RateComponent implements OnChanges {
   from: string;
   @Input()
   to: string;
-  rateNumber: number = 0;
-  rateSubject: Subject<number> = new BehaviorSubject(undefined);
+  rate: number = 0;
 
-  constructor(private rateService: RateService, private ref: ChangeDetectorRef) { }
-
-  getRate() {
-    this.rateService.getRate(this.room_type, this.from, this.to).
-      subscribe(x => this.rateSubject.next(x));
-  }
+  constructor(private rateService: RateService, private changeDetector: ChangeDetectorRef) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.rateService.getRate(this.room_type, this.from, this.to)
-      .pipe(tap(x => console.log(x)))
       .subscribe(value => {
-        this.rateNumber = value
-        this.ref.detectChanges()
+        this.rate = value
+        this.changeDetector.detectChanges()
       })
   }
 }
