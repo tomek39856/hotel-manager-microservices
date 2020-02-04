@@ -5,3 +5,5 @@ spring:
     name: marketing
   profiles:
     active: local
+  mvc:
+    static-path-pattern: /resources/**

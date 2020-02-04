@@ -11,3 +11,31 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
+
+task npmInstall(type: Exec) {
+    workingDir 'marketing-web'
+    commandLine 'npm.cmd', 'install'
+}
+
+task npmBuildFrontend(type: Exec) {
+    inputs.dir('marketing-web/src')
+    inputs.file('marketing-web/package.json')
+    outputs.dir('marketing-web/dist')
+
+    workingDir 'marketing-web'
+
+    commandLine "npm.cmd", "run", "build"
+
+    doLast {
+        print("frontend build finished")
+    }
+}
+
+task copyFrontendToResources(type: Copy) {
+    from 'marketing-web/dist/marketing-web'
+    into 'build/resources/main/static'
+}
+
+npmBuildFrontend.dependsOn(npmInstall)
+copyFrontendToResources.dependsOn(npmBuildFrontend)
+processResources.dependsOn(copyFrontendToResources)

@@ -7,13 +7,13 @@ import {ReservationService} from "../../services/reservation.service";
   styleUrls: ['./reserve.component.sass']
 })
 export class ReserveComponent implements OnInit {
-  @Input()
+  @Input('room-type')
   roomType: string;
   @Input()
   from: string;
   @Input()
   to: string;
-  @Output()
+  @Output('reservation-created')
   reservationCreated: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private reservationService: ReservationService) { }

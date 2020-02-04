@@ -7,7 +7,6 @@ import { RoomSelectionComponent } from './pages/guest-pages/room-selection/room-
 import { StayDetailsComponent } from './pages/guest-pages/stay-details/stay-details.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { DescriptionComponent } from './modules/marketing/description/description.component';
 import { ReservationDetailsComponent } from './pages/guest-pages/reservation-details/reservation-details.component';
 import { GuestProvideComponent } from './modules/guest/guest-provide/guest-provide.component';
 import { PaymentDataComponent } from './modules/payment/payment-data/payment-data.component';
@@ -31,7 +30,6 @@ import { ChargeStatusComponent } from './modules/payment/charge-status/charge-st
     AppComponent,
     RoomSelectionComponent,
     StayDetailsComponent,
-    DescriptionComponent,
     ReservationDetailsComponent,
     GuestProvideComponent,
     PaymentDataComponent,
