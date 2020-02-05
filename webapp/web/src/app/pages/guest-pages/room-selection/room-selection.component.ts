@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Component({
   selector: 'app-room-selection',
@@ -17,10 +18,9 @@ export class RoomSelectionComponent implements OnInit {
   ngOnInit() {}
 
   roomsAvailable(event) {
-
     this.from = event.detail.from;
     this.to = event.detail.to;
-    this.availableRooms = event.detail.roomTypes;
+    event.detail.roomTypes.forEach(roomType => this.availableRooms.push(roomType));
   }
 
   reservationCreated(reservationId: string) {

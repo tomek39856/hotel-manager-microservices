@@ -2,7 +2,7 @@
 <table>
   <tr *ngFor="let roomType of availableRooms">
     <td><app-rate [room_type]=roomType [from]="from" [to]="to"></app-rate></td>
-    <td><app-description [room-type]="roomType"></app-description></td>
+    <td><app-description [room_type]="roomType"></app-description></td>
     <td><app-reserve [room-type]="roomType" [from]="from" [to]="to" (reservation-created)="reservationCreated($event)"></app-reserve></td>
   </tr>
 </table>
