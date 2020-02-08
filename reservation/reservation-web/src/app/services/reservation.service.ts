@@ -13,7 +13,7 @@ export class ReservationService {
   constructor(private httpClient: HttpClient) { }
 
   reserve(roomType: string, from: string, to: string): Observable<string> {
-    return this.httpClient.post<string[]>(this.RESERVATION_URL, {'roomType': roomType, 'from': from, 'to': to}).pipe(
+    return this.httpClient.post<string[]>(this.RESERVATION_URL + '/room', {'roomType': roomType, 'from': from, 'to': to}).pipe(
       map(value => value['id'])
     )
   }

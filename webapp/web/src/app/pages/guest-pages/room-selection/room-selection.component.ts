@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {BehaviorSubject, Subject} from "rxjs";
 
 @Component({
   selector: 'app-room-selection',

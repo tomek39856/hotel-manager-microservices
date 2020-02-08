@@ -23,7 +23,7 @@ class RoomReservationController {
     return findReservationUseCase.execute(id);
   }
 
-  @PostMapping
+  @PostMapping("/room")
   RoomReservationDto reserveRoom(@RequestBody CreateRoomReservationDto createRoomReservationDto) {
     return reserveRoomUseCase
         .execute(createRoomReservationDto);

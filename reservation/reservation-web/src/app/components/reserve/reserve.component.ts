@@ -7,8 +7,8 @@ import {ReservationService} from "../../services/reservation.service";
   styleUrls: ['./reserve.component.sass']
 })
 export class ReserveComponent implements OnInit {
-  @Input('room-type')
-  roomType: string;
+  @Input()
+  room_type: string;
   @Input()
   from: string;
   @Input()
@@ -22,7 +22,7 @@ export class ReserveComponent implements OnInit {
   }
 
   reserve() {
-    this.reservationService.reserve(this.roomType, this.from, this.to).subscribe(
+    this.reservationService.reserve(this.room_type, this.from, this.to).subscribe(
       value => this.reservationCreated.emit(value)
     )
   }
