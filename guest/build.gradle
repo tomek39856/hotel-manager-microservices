@@ -12,3 +12,31 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
+
+task npmInstall(type: Exec) {
+    workingDir 'guest-web'
+    commandLine 'npm.cmd', 'install'
+}
+
+task npmBuildFrontend(type: Exec) {
+    inputs.dir('guest-web/src')
+    inputs.file('guest-web/package.json')
+    outputs.dir('guest-web/dist')
+
+    workingDir 'guest-web'
+
+    commandLine "npm.cmd", "run", "build"
+
+    doLast {
+        print("frontend build finished")
+    }
+}
+
+task copyFrontendToResources(type: Copy) {
+    from 'guest-web/dist/guest-web'
+    into 'build/resources/main/static'
+}
+
+npmBuildFrontend.dependsOn(npmInstall)
+copyFrontendToResources.dependsOn(npmBuildFrontend)
+processResources.dependsOn(copyFrontendToResources)

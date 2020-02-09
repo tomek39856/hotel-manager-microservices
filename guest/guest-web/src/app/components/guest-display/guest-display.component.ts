@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Guest} from '../guest';
+import {Guest} from "../../model/guest";
 
 @Component({
   selector: 'app-guest-display',

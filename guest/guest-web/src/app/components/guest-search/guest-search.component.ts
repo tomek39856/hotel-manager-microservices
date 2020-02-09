@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {GuestService} from '../guest.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {Guest} from '../guest';
+import {Guest} from "../../model/guest";
+import {GuestService} from "../../services/guest.service";
 
 @Component({
   selector: 'app-guest-search',

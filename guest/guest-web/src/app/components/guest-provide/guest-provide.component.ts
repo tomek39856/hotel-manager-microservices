@@ -1,23 +1,21 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Observable} from 'rxjs';
-import {GuestService} from '../guest.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {PaymentData} from '../../payment/payment-data';
-import {Guest} from '../guest';
+import {GuestService} from "../../services/guest.service";
 
 @Component({
-  selector: 'app-guest-details',
+  selector: 'app-guest-provide',
   templateUrl: './guest-provide.component.html',
   styleUrls: ['./guest-provide.component.sass']
 })
-export class GuestProvideComponent implements OnInit {
+export class GuestProvideComponent implements OnInit, OnChanges {
   @Input()
-  submitEvents: Observable<void>;
+  submit_events: Observable<void>;
   @Input()
-  reservationId: string;
-  @Output()
+  reservation_id: string;
+  @Output('create-success')
   createSuccess: EventEmitter<void> = new EventEmitter<void>();
-  @Output()
+  @Output('create-failed')
   createFailed: EventEmitter<void> = new EventEmitter<void>();
   form: FormGroup;
 
@@ -25,9 +23,6 @@ export class GuestProvideComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.submitEvents.subscribe(
-      value => this.saveGuest()
-    )
   }
 
   private initForm() {
@@ -45,7 +40,14 @@ export class GuestProvideComponent implements OnInit {
 
   private saveGuest() {
     this.guestService
-      .create({'reservationId': this.reservationId, 'firstName': this.getFieldValue('name'), 'lastName': this.getFieldValue('lastName')})
+      .create({'reservationId': this.reservation_id, 'firstName': this.getFieldValue('name'), 'lastName': this.getFieldValue('lastName')})
       .subscribe(val => {this.createSuccess.emit()}, error => {this.createFailed.emit()})
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    this.submit_events.subscribe(
+      value => this.saveGuest()
+    )
   }
 }

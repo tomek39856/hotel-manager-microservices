@@ -3,3 +3,5 @@ server:
 spring:
   application:
     name: guest
+  mvc:
+    static-path-pattern: /resources/**

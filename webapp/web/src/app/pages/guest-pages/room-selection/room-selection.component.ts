@@ -22,7 +22,7 @@ export class RoomSelectionComponent implements OnInit {
     event.detail.roomTypes.forEach(roomType => this.availableRooms.push(roomType));
   }
 
-  reservationCreated(reservationId: string) {
-    this.router.navigateByUrl('reservation-details/' + reservationId)
+  reservationCreated(event) {
+    this.router.navigateByUrl('reservation-details/' + event.detail)
   }
 }

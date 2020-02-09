@@ -8,16 +8,12 @@ import { StayDetailsComponent } from './pages/guest-pages/stay-details/stay-deta
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ReservationDetailsComponent } from './pages/guest-pages/reservation-details/reservation-details.component';
-import { GuestProvideComponent } from './modules/guest/guest-provide/guest-provide.component';
 import { PaymentDataComponent } from './modules/payment/payment-data/payment-data.component';
 import { PaymentDetailsComponent } from './pages/guest-pages/payment-details/payment-details.component';
 import { PaymentStatusComponent } from './modules/payment/payment-status/payment-status.component';
 import { HoldStatusComponent } from './modules/payment/hold-status/hold-status.component';
 import { ReservationSuccessComponent } from './pages/guest-pages/reservation-success/reservation-success.component';
-import { ReservationGuestComponent } from './modules/guest/reservation-guest/reservation-guest.component';
 import { FindGuestComponent } from './pages/reception-pages/find-guest/find-guest.component';
-import { GuestSearchComponent } from './modules/guest/guest-search/guest-search.component';
-import { GuestDisplayComponent } from './modules/guest/guest-display/guest-display.component';
 import { CheckInComponent } from './pages/reception-pages/check-in/check-in.component';
 import { FreeRoomSearchComponent } from './modules/occupancy/free-room-search/free-room-search.component';
 import { RoomCheckInComponent } from './modules/occupancy/room-check-in/room-check-in.component';
@@ -31,16 +27,12 @@ import { ChargeStatusComponent } from './modules/payment/charge-status/charge-st
     RoomSelectionComponent,
     StayDetailsComponent,
     ReservationDetailsComponent,
-    GuestProvideComponent,
     PaymentDataComponent,
     PaymentDetailsComponent,
     PaymentStatusComponent,
     HoldStatusComponent,
     ReservationSuccessComponent,
-    ReservationGuestComponent,
     FindGuestComponent,
-    GuestSearchComponent,
-    GuestDisplayComponent,
     CheckInComponent,
     FreeRoomSearchComponent,
     RoomCheckInComponent,

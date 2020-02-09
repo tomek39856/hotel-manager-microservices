@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Guest} from '../../../modules/guest/guest';
 import {Router} from '@angular/router';
+import {Guest} from "../../../model/guest";
 
 @Component({
   selector: 'app-find-guest',

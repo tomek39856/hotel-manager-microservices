@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GuestService} from '../guest.service';
 import {Observable} from 'rxjs';
-import {Guest} from '../guest';
 import {share} from 'rxjs/operators';
+import {Guest} from "../../model/guest";
+import {GuestService} from "../../services/guest.service";
 
 @Component({
   selector: 'app-guest',
