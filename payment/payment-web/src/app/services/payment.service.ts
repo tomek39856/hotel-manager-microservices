@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {PaymentData} from './payment-data';
 import {map} from 'rxjs/operators';
+import {PaymentData} from "../model/payment-data";
 
 @Injectable({
   providedIn: 'root'

@@ -11,13 +11,13 @@ import {GuestService} from "../../services/guest.service";
 })
 export class ReservationGuestComponent implements OnInit {
   @Input()
-  reservationId: string;
+  reservation_id: string;
   guest$: Observable<Guest>
 
   constructor(private guestService: GuestService) { }
 
   ngOnInit() {
-    this.guest$ = this.guestService.findForReservation(this.reservationId).pipe(
+    this.guest$ = this.guestService.findForReservation(this.reservation_id).pipe(
       share()
     );
   }

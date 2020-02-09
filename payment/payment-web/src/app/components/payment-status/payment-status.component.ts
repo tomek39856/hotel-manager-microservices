@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BehaviorSubject, of, Subject, timer} from 'rxjs';
-import {PaymentService} from '../payment.service';
 import {shareReplay, switchMap, takeWhile, tap} from 'rxjs/operators';
+import {PaymentService} from "../../services/payment.service";
 
 @Component({
   selector: 'app-payment-status',

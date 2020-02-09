@@ -28,9 +28,9 @@ export class ReservationDetailsComponent implements OnInit {
     this.submitEventsSubject.next();
   }
 
-  paymentCreated(id :string) {
-    console.log('payment created received '+ id)
-    this.paymentCreatedSubject.next(id);
+  paymentCreated(event) {
+    console.log('payment created received '+ event.detail)
+    this.paymentCreatedSubject.next(event.detail);
   }
 
   guestCreated() {

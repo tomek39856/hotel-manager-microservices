@@ -9,3 +9,5 @@ spring:
       password: admin
   jms:
     pub-sub-domain: true
+  mvc:
+    static-path-pattern: /resources/**

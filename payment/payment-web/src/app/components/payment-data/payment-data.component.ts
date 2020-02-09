@@ -1,22 +1,22 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Observable} from 'rxjs';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {PaymentService} from '../payment.service';
-import {PaymentData} from '../payment-data';
+import {PaymentService} from "../../services/payment.service";
+import {PaymentData} from "../../model/payment-data";
 
 @Component({
   selector: 'app-payment-data',
   templateUrl: './payment-data.component.html',
   styleUrls: ['./payment-data.component.sass']
 })
-export class PaymentDataComponent implements OnInit {
+export class PaymentDataComponent implements OnInit, OnChanges {
   @Input()
-  submitEvent: Observable<void>;
+  submit_event: Observable<void>;
   @Input()
-  reservationId: string;
-  @Output()
+  reservation_id: string;
+  @Output('payment-data-save-success')
   paymentDataSaveSuccess: EventEmitter<string> = new EventEmitter<string>();
-  @Output()
+  @Output('payment-data-save-failed')
   paymentDataSaveFailed: EventEmitter<void> = new EventEmitter<void>();
 
   form: FormGroup;
@@ -25,12 +25,15 @@ export class PaymentDataComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.submitEvent.subscribe(value => this.savePayment());
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.submit_event.subscribe(value => this.savePayment());
   }
 
   private savePayment() {
     this.paymentService
-      .create(new PaymentData(this.reservationId, this.getFieldValue('owner'), this.getFieldValue('cardNumber'), this.getFieldValue('cardValidity')))
+      .create(new PaymentData(this.reservation_id, this.getFieldValue('owner'), this.getFieldValue('cardNumber'), this.getFieldValue('cardValidity')))
       .subscribe(val => {console.log('emit payment success'); this.paymentDataSaveSuccess.emit(val)}, error => {this.paymentDataSaveFailed.emit()})
   }
 
