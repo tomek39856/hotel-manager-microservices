@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BehaviorSubject, of, Subject, timer} from 'rxjs';
 import {shareReplay, switchMap, takeWhile, tap} from 'rxjs/operators';
 import {PaymentService} from "../../services/payment.service";

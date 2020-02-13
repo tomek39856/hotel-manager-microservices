@@ -1,4 +1,13 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {Observable} from 'rxjs';
 import {share} from 'rxjs/operators';
 import {Reservation} from "../../model/reservation";
@@ -9,17 +18,26 @@ import {ReservationService} from "../../services/reservation.service";
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.sass']
 })
-  export class ReservationComponent implements OnInit {
+  export class ReservationComponent implements OnChanges {
   @Input()
-  reservationId: string;
+  reservation_id: string;
   @Output()
   reservationFound: EventEmitter<Reservation> = new EventEmitter<Reservation>()
-  reservation$: Observable<Reservation>;
+  reservation: Reservation;
 
-  constructor(private reservationService: ReservationService) { }
+  constructor(private reservationService: ReservationService, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.reservation$ = this.reservationService.getById(this.reservationId).pipe(share());
-    this.reservation$.subscribe(value => this.reservationFound.emit(value));
+    console.log('init:' + this.reservation_id)
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.reservationService.getById(this.reservation_id)
+    .subscribe(value => {
+      this.reservation = value;
+      this.reservationFound.emit(value);
+      this.changeDetectorRef.detectChanges();
+    });
+
   }
 }

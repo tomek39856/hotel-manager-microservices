@@ -11,9 +11,11 @@ export class ReservationSuccessComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {
     this.reservationId = this.route.snapshot.params['id'];
+    console.log('route snapshot:' + this.reservationId)
   }
 
   ngOnInit() {
+
   }
 
 }

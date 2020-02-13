@@ -10,6 +10,7 @@ export class PaymentDetailsComponent implements OnInit {
   reservationId: string;
 
   constructor(private route: ActivatedRoute, private router: Router) {
+    console.log(this.route.snapshot.params['id'])
     this.reservationId = this.route.snapshot.params['id'];
   }
 
