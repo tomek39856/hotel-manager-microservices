@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Room} from '../room';
+import {Room} from "../../model/room";
 
 @Component({
   selector: 'app-room-properties',
@@ -10,7 +10,7 @@ export class RoomPropertiesComponent implements OnInit {
   @Input()
   room: Room;
   @Output()
-  roomForCheckInSelected: EventEmitter<Room> = new EventEmitter<Room>()
+  room_for_check_in_selected: EventEmitter<Room> = new EventEmitter<Room>()
 
   constructor() { }
 
@@ -18,7 +18,7 @@ export class RoomPropertiesComponent implements OnInit {
   }
 
   checkIn() {
-    this.roomForCheckInSelected.emit(this.room);
+    this.room_for_check_in_selected.emit(this.room);
   }
 
 }

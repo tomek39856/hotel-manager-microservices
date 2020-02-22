@@ -22,7 +22,7 @@ import {ReservationService} from "../../services/reservation.service";
   @Input()
   reservation_id: string;
   @Output()
-  reservationFound: EventEmitter<Reservation> = new EventEmitter<Reservation>()
+  reservation_found: EventEmitter<Reservation> = new EventEmitter<Reservation>()
   reservation: Reservation;
 
   constructor(private reservationService: ReservationService, private changeDetectorRef: ChangeDetectorRef) { }
@@ -35,7 +35,7 @@ import {ReservationService} from "../../services/reservation.service";
     this.reservationService.getById(this.reservation_id)
     .subscribe(value => {
       this.reservation = value;
-      this.reservationFound.emit(value);
+      this.reservation_found.emit(value);
       this.changeDetectorRef.detectChanges();
     });
 

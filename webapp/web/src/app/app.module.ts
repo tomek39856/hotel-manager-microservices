@@ -11,9 +11,6 @@ import { PaymentDetailsComponent } from './pages/guest-pages/payment-details/pay
 import { ReservationSuccessComponent } from './pages/guest-pages/reservation-success/reservation-success.component';
 import { FindGuestComponent } from './pages/reception-pages/find-guest/find-guest.component';
 import { CheckInComponent } from './pages/reception-pages/check-in/check-in.component';
-import { FreeRoomSearchComponent } from './modules/occupancy/free-room-search/free-room-search.component';
-import { RoomCheckInComponent } from './modules/occupancy/room-check-in/room-check-in.component';
-import { RoomPropertiesComponent } from './modules/occupancy/room-properties/room-properties.component';
 import { CheckInDetailsComponent } from './pages/reception-pages/check-in-details/check-in-details.component';
 
 @NgModule({
@@ -25,9 +22,6 @@ import { CheckInDetailsComponent } from './pages/reception-pages/check-in-detail
     ReservationSuccessComponent,
     FindGuestComponent,
     CheckInComponent,
-    FreeRoomSearchComponent,
-    RoomCheckInComponent,
-    RoomPropertiesComponent,
     CheckInDetailsComponent,
   ],
   imports: [

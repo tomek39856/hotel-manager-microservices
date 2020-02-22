@@ -12,29 +12,32 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AvaliableSearchComponent,
-    ConfirmArrivalComponent,
-    ReservationComponent,
-    ReserveComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  entryComponents: [
-    AppComponent,
-    AvaliableSearchComponent,
-    ConfirmArrivalComponent,
-    ReservationComponent,
-    ReserveComponent
-  ],
+    declarations: [
+        AppComponent,
+        AvaliableSearchComponent,
+        ConfirmArrivalComponent,
+        ReservationComponent,
+        ReserveComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule
+    ],
+    providers: [],
+    entryComponents: [
+        AppComponent,
+        AvaliableSearchComponent,
+        ConfirmArrivalComponent,
+        ReservationComponent,
+        ReserveComponent
+    ],
+    exports: [
+        ReservationComponent
+    ],
 
-  bootstrap: []
+    bootstrap: []
 })
 export class AppModule {
   constructor(private injector: Injector) {

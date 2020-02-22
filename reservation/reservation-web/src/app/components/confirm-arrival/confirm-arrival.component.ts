@@ -8,9 +8,9 @@ import {ReservationService} from "../../services/reservation.service";
 })
 export class ConfirmArrivalComponent implements OnInit {
   @Input()
-  reservationId: string;
+  reservation_id: string;
   @Output()
-  arrivalConfirmed = new EventEmitter<void>()
+  arrival_confirmed = new EventEmitter<void>()
 
   constructor(private reservationService: ReservationService) { }
 
@@ -18,8 +18,8 @@ export class ConfirmArrivalComponent implements OnInit {
   }
 
   confirmArrival() {
-    this.reservationService.confirmArrival(this.reservationId).subscribe(
-      v => this.arrivalConfirmed.emit()
+    this.reservationService.confirmArrival(this.reservation_id).subscribe(
+      v => this.arrival_confirmed.emit()
     );
   }
 }

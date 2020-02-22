@@ -14,3 +14,32 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.3.RELEASE'
 }
+
+
+task npmInstall(type: Exec) {
+    workingDir 'occupancy-web'
+    commandLine 'npm.cmd', 'install'
+}
+
+task npmBuildFrontend(type: Exec) {
+    inputs.dir('occupancy-web/src')
+    inputs.file('occupancy-web/package.json')
+    outputs.dir('occupancy-web/dist')
+
+    workingDir 'occupancy-web'
+
+    commandLine "npm.cmd", "run", "build"
+
+    doLast {
+        print("frontend build finished")
+    }
+}
+
+task copyFrontendToResources(type: Copy) {
+    from 'occupancy-web/dist/occupancy-web'
+    into 'build/resources/main/static'
+}
+
+npmBuildFrontend.dependsOn(npmInstall)
+copyFrontendToResources.dependsOn(npmBuildFrontend)
+processResources.dependsOn(copyFrontendToResources)

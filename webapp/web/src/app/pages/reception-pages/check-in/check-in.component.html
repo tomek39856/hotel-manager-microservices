@@ -1,4 +1,4 @@
 <p>Reservation details</p>
-<app-reservation [reservationId]="reservationId" (reservationFound)="reservationFound($event)"></app-reservation>
-<app-free-room-search [roomType]="(reservationSubject | async)?.roomType" [to]="(reservationSubject | async)?.end" [from]="(reservationSubject | async)?.start" (roomsAvailable)="roomsFound($event)"></app-free-room-search>
-<app-room-check-in [rooms]="rooms" [to]="(reservationSubject | async)?.end" [from]="(reservationSubject | async)?.start" [reservationId]="reservationId"></app-room-check-in>
+<app-reservation [reservation_id]="reservationId" (reservation_found)="reservationFound($event)"></app-reservation>
+<app-free-room-search [room_type]="(reservationSubject | async)?.roomType" [to]="(reservationSubject | async)?.end" [from]="(reservationSubject | async)?.start" (rooms_available)="roomsFound($event)"></app-free-room-search>
+<app-room-check-in [rooms]="rooms" [to]="(reservationSubject | async)?.end" [from]="(reservationSubject | async)?.start" [reservation_id]="reservationId"></app-room-check-in>

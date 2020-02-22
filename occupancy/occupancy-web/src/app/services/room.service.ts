@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Room} from './room';
+import {Room} from "../model/room";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,6 @@ export class RoomService {
   }
 
   checkIn(from: string, to: string, roomId: string, reservationId: string): Observable<void> {
-    console.log({'from': from, 'to': to, 'roomId': roomId, 'reservationId': reservationId})
     return this.httpClient.post<void>(this.ROOM_URL + '/check-in', {'from': from, 'to': to, 'roomId': roomId, 'reservationId': reservationId})
   }
 }

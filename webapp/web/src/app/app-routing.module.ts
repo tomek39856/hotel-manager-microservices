@@ -15,8 +15,8 @@ const routes: Routes = [
   {path: 'payment-details/:id', component: PaymentDetailsComponent },
   {path: 'reservation-success/:id', component: ReservationSuccessComponent },
   {path: 'reception', children: [
-  {path: 'find-guest', component: FindGuestComponent},
-  {path: 'check-in/:id/reservation/:reservationId', component: CheckInComponent},
+    {path: 'find-guest', component: FindGuestComponent},
+    {path: 'check-in/:id/reservation/:reservationId', component: CheckInComponent},
   ]}
 ];
 

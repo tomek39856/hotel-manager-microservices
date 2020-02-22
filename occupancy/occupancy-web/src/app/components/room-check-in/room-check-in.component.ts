@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Room} from '../room';
-import {RoomService} from '../room.service';
+import {Room} from "../../model/room";
+import {RoomService} from "../../services/room.service";
 
 @Component({
   selector: 'app-room-check-in',
@@ -15,9 +15,9 @@ export class RoomCheckInComponent implements OnInit {
   @Input()
   to: string;
   @Input()
-  reservationId: string;
+  reservation_id: string;
   @Output()
-  checkedIn: EventEmitter<void> = new EventEmitter<void>();
+  checked_in: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private roomService: RoomService) { }
 
@@ -26,8 +26,8 @@ export class RoomCheckInComponent implements OnInit {
 
   checkIn(room: Room) {
     console.log(room);
-    this.roomService.checkIn(this.from, this.to, room.roomId, this.reservationId).subscribe(
-      value => this.checkedIn.emit()
+    this.roomService.checkIn(this.from, this.to, room.roomId, this.reservation_id).subscribe(
+      value => this.checked_in.emit()
     )
   }
 }

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {RoomService} from '../room.service';
-import {Room} from '../room';
+import {Room} from "../../model/room";
+import {RoomService} from "../../services/room.service";
 
 @Component({
   selector: 'app-free-room-search',
@@ -13,9 +13,9 @@ export class FreeRoomSearchComponent implements OnInit {
   @Input()
   to: string;
   @Input()
-  roomType: string;
+  room_type: string;
   @Output()
-  roomsAvailable: EventEmitter<Room[]> = new EventEmitter<Room[]>()
+  rooms_available: EventEmitter<Room[]> = new EventEmitter<Room[]>()
 
   constructor(private roomService: RoomService) { }
 
@@ -23,8 +23,8 @@ export class FreeRoomSearchComponent implements OnInit {
   }
 
   search() {
-    this.roomService.getFreeRooms(this.from, this.to, this.roomType).subscribe(
-      value => this.roomsAvailable.emit(value)
+    this.roomService.getFreeRooms(this.from, this.to, this.room_type).subscribe(
+      value => this.rooms_available.emit(value)
     );
   }
 }
