@@ -7,7 +7,7 @@ import {Room} from "../model/room";
   providedIn: 'root'
 })
 export class RoomService {
-  private ROOM_URL = 'http://localhost:8080/room';
+  private ROOM_URL = 'http://localhost:8080/occupancy/room';
 
   constructor(private httpClient: HttpClient) { }
 

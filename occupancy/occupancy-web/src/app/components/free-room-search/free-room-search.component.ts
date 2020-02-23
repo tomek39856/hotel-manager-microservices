@@ -16,6 +16,7 @@ export class FreeRoomSearchComponent implements OnInit {
   room_type: string;
   @Output()
   rooms_available: EventEmitter<Room[]> = new EventEmitter<Room[]>()
+  rooms: Room[];
 
   constructor(private roomService: RoomService) { }
 
@@ -24,7 +25,11 @@ export class FreeRoomSearchComponent implements OnInit {
 
   search() {
     this.roomService.getFreeRooms(this.from, this.to, this.room_type).subscribe(
-      value => this.rooms_available.emit(value)
+      value => {
+        console.log(value)
+        this.rooms_available.emit(value);
+        this.rooms = value;
+      }
     );
   }
 }

@@ -6,14 +6,16 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import {createCustomElement} from "@angular/elements";
 import {FreeRoomSearchComponent} from "./components/free-room-search/free-room-search.component";
-import {RoomCheckInComponent} from "./components/room-check-in/room-check-in.component";
+import {RoomSelectComponent} from "./components/room-select/room-select.component";
 import {RoomPropertiesComponent} from "./components/room-properties/room-properties.component";
+import { CheckInToRoomComponent } from './components/check-in-to-room/check-in-to-room.component';
 
 @NgModule({
   declarations: [
     FreeRoomSearchComponent,
-    RoomCheckInComponent,
-    RoomPropertiesComponent
+    RoomSelectComponent,
+    RoomPropertiesComponent,
+    CheckInToRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -22,11 +24,11 @@ import {RoomPropertiesComponent} from "./components/room-properties/room-propert
   ],
   providers: [],
   entryComponents: [
-    FreeRoomSearchComponent,
-    RoomCheckInComponent,
-    RoomPropertiesComponent
+    CheckInToRoomComponent
   ],
-  exports: [],
+  exports: [
+    CheckInToRoomComponent
+  ],
   bootstrap: []
 })
 export class AppModule {
@@ -35,8 +37,6 @@ export class AppModule {
   }
 
   ngDoBootstrap() {
-    customElements.define('app-free-room-search', createCustomElement(FreeRoomSearchComponent, { injector: this.injector }));
-    customElements.define('app-room-check-in', createCustomElement(RoomCheckInComponent, { injector: this.injector }));
-    customElements.define('app-room-properties', createCustomElement(RoomPropertiesComponent, { injector: this.injector }));
+    customElements.define('app-check-in-to-room', createCustomElement(CheckInToRoomComponent, { injector: this.injector }));
   }
 }

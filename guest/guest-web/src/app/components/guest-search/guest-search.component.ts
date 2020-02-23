@@ -10,7 +10,7 @@ import {GuestService} from "../../services/guest.service";
 })
 export class GuestSearchComponent implements OnInit {
   @Output()
-  guestsFound: EventEmitter<Guest[]> = new EventEmitter<Guest[]>();
+  guests_found: EventEmitter<Guest[]> = new EventEmitter<Guest[]>();
   form: FormGroup;
 
   constructor(private guestService: GuestService, private fb: FormBuilder) { }
@@ -19,13 +19,13 @@ export class GuestSearchComponent implements OnInit {
     this.form = this.fb.group({
         lastName: this.fb.control('Kowalski'),
       }
-    )
+    );
   }
 
   search() {
     this.guestService.findByLastName(this.form.get('lastName').value).subscribe(
-      value => this.guestsFound.emit(value)
-    )
+      value => this.guests_found.emit(value)
+    );
   }
 
 }

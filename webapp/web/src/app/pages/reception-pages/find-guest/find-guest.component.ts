@@ -15,8 +15,8 @@ export class FindGuestComponent implements OnInit {
   ngOnInit() {
   }
 
-  guestsFound(guests: Guest[]) {
-    this.guests = guests;
+  guestsFound(guestsEvent) {
+    this.guests = guestsEvent.detail;
   }
 
   guestArrivalConfirmed(guest: Guest) {

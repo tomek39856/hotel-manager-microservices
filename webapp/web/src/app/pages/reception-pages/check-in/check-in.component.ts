@@ -13,8 +13,8 @@ export class CheckInComponent implements OnInit {
   reservationId: string;
   guestId: string;
   reservationSubject: Subject<Reservation> = new BehaviorSubject(null);
-  roomsSubject: Subject<Room[]> = new BehaviorSubject(null);
   rooms: Room[] = [];
+  reservation: Reservation;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -23,12 +23,11 @@ export class CheckInComponent implements OnInit {
     this.guestId = this.route.snapshot.params['guestId'];
   }
 
-  reservationFound(reservation: Reservation) {
-    this.reservationSubject.next(reservation);
+  reservationFound(reservationFoundEvent) {
+    this.reservationSubject.next(reservationFoundEvent.detail);
   }
 
-  roomsFound(rooms: Room[]) {
-    this.rooms = rooms;
+  roomsFound(roomsFoundEvent) {
+    this.rooms = roomsFoundEvent.detail;
   }
-
 }

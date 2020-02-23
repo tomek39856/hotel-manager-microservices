@@ -1,13 +1,23 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {Room} from "../../model/room";
 import {RoomService} from "../../services/room.service";
 
 @Component({
   selector: 'app-room-check-in',
-  templateUrl: './room-check-in.component.html',
-  styleUrls: ['./room-display.component.sass']
+  templateUrl: './room-select.component.html',
+  styleUrls: ['./room-display.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomCheckInComponent implements OnInit {
+export class RoomSelectComponent implements OnInit, OnChanges {
   @Input()
   rooms: Room[];
   @Input()
@@ -24,8 +34,11 @@ export class RoomCheckInComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.rooms)
+  }
+
   checkIn(room: Room) {
-    console.log(room);
     this.roomService.checkIn(this.from, this.to, room.roomId, this.reservation_id).subscribe(
       value => this.checked_in.emit()
     )
