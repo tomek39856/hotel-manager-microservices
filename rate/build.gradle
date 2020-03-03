@@ -3,6 +3,12 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'com.github.tomek39856.ngspringbootplugin'
+
+ngspringbootplugin {
+    projectDirectory = 'rate-web'
+}
+
 
 sourceCompatibility = 1.8
 
@@ -18,31 +24,4 @@ dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.3.RELEASE'
 }
 
-
-task npmInstall(type: Exec) {
-    workingDir 'rate-web'
-    commandLine 'npm.cmd', 'install'
-}
-
-task npmBuildFrontend(type: Exec) {
-    inputs.dir('rate-web/src')
-    inputs.file('rate-web/package.json')
-    outputs.dir('rate-web/dist')
-
-    workingDir 'rate-web'
-
-    commandLine "npm.cmd", "run", "build"
-
-    doLast {
-        print("frontend build finished")
-    }
-}
-
-task copyFrontendToResources(type: Copy) {
-    from 'rate-web/dist/rate-web'
-    into 'build/resources/main/static'
-}
-
-npmBuildFrontend.dependsOn(npmInstall)
-copyFrontendToResources.dependsOn(npmBuildFrontend)
 processResources.dependsOn(copyFrontendToResources)

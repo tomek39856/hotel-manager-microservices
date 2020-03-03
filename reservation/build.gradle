@@ -4,7 +4,11 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'com.github.tomek39856.ngspringbootplugin'
 
+ngspringbootplugin {
+    projectDirectory = 'reservation-web'
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.0.3.RELEASE'
@@ -16,31 +20,4 @@ dependencies {
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.3.RELEASE'
 }
 
-
-task npmInstall(type: Exec) {
-    workingDir 'reservation-web'
-    commandLine 'npm.cmd', 'install'
-}
-
-task npmBuildFrontend(type: Exec) {
-    inputs.dir('reservation-web/src')
-    inputs.file('reservation-web/package.json')
-    outputs.dir('reservation-web/dist')
-
-    workingDir 'reservation-web'
-
-    commandLine "npm.cmd", "run", "build"
-
-    doLast {
-        print("frontend build finished")
-    }
-}
-
-task copyFrontendToResources(type: Copy) {
-    from 'reservation-web/dist/reservation-web'
-    into 'build/resources/main/static'
-}
-
-npmBuildFrontend.dependsOn(npmInstall)
-copyFrontendToResources.dependsOn(npmBuildFrontend)
 processResources.dependsOn(copyFrontendToResources)

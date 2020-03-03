@@ -4,6 +4,11 @@ version '1.0-SNAPSHOT'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
+apply plugin: 'com.github.tomek39856.ngspringbootplugin'
+
+ngspringbootplugin {
+    projectDirectory = 'reservation-web'
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -13,30 +18,4 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
-task npmInstall(type: Exec) {
-    workingDir 'guest-web'
-    commandLine 'npm.cmd', 'install'
-}
-
-task npmBuildFrontend(type: Exec) {
-    inputs.dir('guest-web/src')
-    inputs.file('guest-web/package.json')
-    outputs.dir('guest-web/dist')
-
-    workingDir 'guest-web'
-
-    commandLine "npm.cmd", "run", "build"
-
-    doLast {
-        print("frontend build finished")
-    }
-}
-
-task copyFrontendToResources(type: Copy) {
-    from 'guest-web/dist/guest-web'
-    into 'build/resources/main/static'
-}
-
-npmBuildFrontend.dependsOn(npmInstall)
-copyFrontendToResources.dependsOn(npmBuildFrontend)
 processResources.dependsOn(copyFrontendToResources)

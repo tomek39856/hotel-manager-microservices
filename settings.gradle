@@ -1,3 +1,11 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+    }
+}
+
+
 rootProject.name = 'hotel-manager-microservices'
 include 'guest'
 include 'reservation'
