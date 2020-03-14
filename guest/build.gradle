@@ -7,7 +7,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'com.github.tomek39856.ngspringbootplugin'
 
 ngspringbootplugin {
-    projectDirectory = 'reservation-web'
+    projectDirectory = 'guest-web'
 }
 
 dependencies {
@@ -17,5 +17,6 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
+
 
 processResources.dependsOn(copyFrontendToResources)
